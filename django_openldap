@@ -4,19 +4,19 @@ from django_auth_ldap.config import LDAPSearch, GroupOfNamesType, GroupOfUniqueN
 
 #AUTH_LDAP_START_TLS
 
-#AUTH_LDAP_SERVER_URI = 'ldap://192.168.131.201:1389'
-AUTH_LDAP_SERVER_URI = 'ldap://192.168.130.117:389'
+#AUTH_LDAP_SERVER_URI = 'ldap://192.168.222.222:1389'
+AUTH_LDAP_SERVER_URI = 'ldap://192.168.222.222:389'
 
 
-AUTH_LDAP_BIND_DN = "dc=weizhu,dc=com"
+AUTH_LDAP_BIND_DN = "dc=yourdomian,dc=com"
 
-AUTH_LDAP_BIND_PASSWORD = "qianbao"
-AUTH_LDAP_USER_DN_TEMPLATE = "uid=%(user)s,ou=people,dc=weizhu,dc=com"
+AUTH_LDAP_BIND_PASSWORD = "password"
+AUTH_LDAP_USER_DN_TEMPLATE = "uid=%(user)s,ou=people,dc=yourdomian,dc=com"
 # ldap的用户搜索的路径，可以使用LDAP的客户端查看用户的搜索路径
 # 我这边使用的ldapBorwser查看的ldap账号结构和信息
 
-#AUTH_LDAP_USER_SEARCH = LDAPSearch("dc=wzcloud,dc=com",ldap.SCOPE_SUBTREE, "(&(objectClass=person))")
-AUTH_LDAP_USER_SEARCH = LDAPSearch("ou=people,dc=wzcloud,dc=com",ldap.SCOPE_SUBTREE, "(uid=%(user)s)")
+#AUTH_LDAP_USER_SEARCH = LDAPSearch("dc=yourdomian,dc=com",ldap.SCOPE_SUBTREE, "(&(objectClass=person))")
+AUTH_LDAP_USER_SEARCH = LDAPSearch("ou=people,dc=yourdomian,dc=com",ldap.SCOPE_SUBTREE, "(uid=%(user)s)")
 # ldap用户组的搜索路径
 #AUTH_LDAP_GROUP_SEARCH = LDAPSearch("cn=groups,cn=accounts,dc=oschina,dc=com",
 #    ldap.SCOPE_SUBTREE, "(objectClass=groupOfNames)"
