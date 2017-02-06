@@ -1,0 +1,25 @@
+#AUTH_LDAP_GROUP_SEARCH = LDAPSearch("cn=groups,cn=accounts,dc=oschina,dc=com",
+#    ldap.SCOPE_SUBTREE, "(objectClass=groupOfNames)"
+#)
+
+#AUTH_LDAP_GROUP_TYPE = GroupOfNamesType(name_attr="cn")
+
+# ldap中对于的用户属性同步到django用户账号的属性对应列
+AUTH_LDAP_USER_ATTR_MAP = {
+    "first_name": "givenName",
+    "last_name": "sn",
+    "email": "mail"
+}
+AUTH_LDAP_ALWAYS_UPDATE_USER = True
+#AUTH_LDAP_USER_FLAGS_BY_GROUP = {
+#定义用户可以登录admin后台的组是哪个，前面ldap中已经创建了这个组，并加入了指定用户
+# 默认创建的django用户是不能登录admin后台的
+#    "is_staff": "cn=eric_admin,cn=groups,cn=accounts,dc=oschina,dc=com", 
+#定义用户可以完全操作admin后台的组是哪个，前面ldap中已经创建了这个组，并加入了指定用户
+#    "is_superuser": "cn=eric_admin,cn=groups,cn=accounts,dc=oschina,dc=com" 
+#}
+
+AUTHENTICATION_BACKENDS = (
+'django_auth_ldap.backend.LDAPBackend',
+'django.contrib.auth.backends.ModelBackend',
+)
